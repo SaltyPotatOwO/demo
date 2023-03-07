@@ -110,7 +110,7 @@ public class NewsController extends HttpServlet {
 
     private void updateNews(HttpServletRequest request, HttpServletResponse response) {
         try {
-            NewsDAO dao = new NewsDAO();
+            NewsDAO dao = new    NewsDAO();
 
             int user_id = Integer.parseInt(request.getParameter("user_id"));
             int news_id = Integer.parseInt(request.getParameter("news_id"));
