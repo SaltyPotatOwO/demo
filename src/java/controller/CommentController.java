@@ -101,11 +101,9 @@ public class CommentController extends HttpServlet {
             CommentDAO commentDAO = new CommentDAO();
 
             int comment_id = Integer.parseInt(request.getParameter("comment_id"));
-            int user_id = Integer.parseInt(request.getParameter("user_id"));
-            int news_id = Integer.parseInt(request.getParameter("news_id"));
             String comment_content = request.getParameter("comment_content");
-
-            Comments comment = new Comments(comment_id, user_id, news_id, "#", comment_content);// (#) the variable user real name is not needed to update
+            
+            Comments comment = new Comments(comment_id, comment_content);
             commentDAO.updateComments(comment);//update comment into database
 
         } catch (Exception e) {

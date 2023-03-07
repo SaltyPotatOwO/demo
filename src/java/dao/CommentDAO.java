@@ -26,17 +26,14 @@ public class CommentDAO {
             Connection con = db.getConnection();
             Statement st = con.createStatement();
             String sql = " SELECT * "
-                    + " FROM Comment c ,Users u "
-                    + " WHERE c.User_id = u.User_id "
-                    + " AND c.News_id =  "+ news_id
-                    + " ORDER BY c.Comment_id desc ";
+                    + " FROM Comment "
+                    + " WHERE News_id = "+ news_id
+                    + " ORDER BY Comment_id desc ";
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 comment = new Comments();
                 comment.setComment_id(rs.getInt("Comment_id"));
                 comment.setUser_id(rs.getInt("User_id"));
-                comment.setNews_id(rs.getInt("News_id"));
-                comment.setUser_real_name(rs.getString("User_name"));
                 comment.setCommment_content(rs.getString("Comment_content"));
                 listComment.add(comment);
             }
