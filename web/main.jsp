@@ -41,7 +41,7 @@ Author     : Asus
                 </td>
                 <td>
                     <a href='NewsController?cat_id=<%=news.getCat_id()%>&action=search'>
-                        <%=news.getCat_name()%>
+                        <%=news.getCat_id()%>
                     </a>
                 </td>
                 <td>
