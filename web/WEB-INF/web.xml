@@ -8,6 +8,38 @@
         <servlet-name>CommentController</servlet-name>
         <servlet-class>controller.CommentController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertNews</servlet-name>
+        <servlet-class>controller.InsertNews</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetNews</servlet-name>
+        <servlet-class>controller.GetNews</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>forwardToHomePage</servlet-name>
+        <servlet-class>controller.forwardToHomePage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetListNews</servlet-name>
+        <servlet-class>controller.GetListNews</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>forwardToShowNews</servlet-name>
+        <servlet-class>controller.forwardToShowNews</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateNews</servlet-name>
+        <servlet-class>controller.UpdateNews</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteNews</servlet-name>
+        <servlet-class>controller.DeleteNews</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>controller.Search</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewsController</servlet-name>
         <url-pattern>/NewsController</url-pattern>
@@ -16,9 +48,45 @@
         <servlet-name>CommentController</servlet-name>
         <url-pattern>/CommentController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetListNews</servlet-name>
+        <url-pattern>/GetListNews</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>forwardToShowNews</servlet-name>
+        <url-pattern>/News</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>forwardToHomePage</servlet-name>
+        <url-pattern>/HomePage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertNews</servlet-name>
+        <url-pattern>/InsertNews</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetNews</servlet-name>
+        <url-pattern>/GetNews</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateNews</servlet-name>
+        <url-pattern>/UpdateNews</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteNews</servlet-name>
+        <url-pattern>/DeleteNews</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
+        <cookie-config>
+            <http-only>&gt;true</http-only>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
     </session-config>
 </web-app>

@@ -13,11 +13,8 @@ Author     : Asus
         <h1>List news.</h1>
         <%
             ArrayList<News> listNews = (ArrayList<News>) request.getAttribute("listNews");
-            String location = (String) request.getAttribute("location");
             if (listNews == null || listNews.isEmpty()) {
                 out.println("Empty list <br/><br/>");
-            } else if (location == null || location.isEmpty()) {
-                out.println("Empty location <br/><br/>");
             } else {
         %>
         <table border='1px' style='width: 500px; font-size: 20px;' >
@@ -36,7 +33,7 @@ Author     : Asus
 
                 <td>
                     <a href='NewsController?news_id=<%=news.getNews_id()%>&action=get'>
-                        <image src="<%= location + news.getImage()%>" width="500" height="600">
+                        <image src="images/<%= news.getImage()%>" width="500" height="600"/>
                     </a>
                 </td>
                 <td>
