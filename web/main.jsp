@@ -31,7 +31,7 @@ Author     : Asus
             %>
             <tr>
 
-                <td>
+                <td> 
                     <a href='NewsController?news_id=<%=news.getNews_id()%>&action=get'>
                         <image src="images/<%= news.getImage()%>" width="500" height="600"/>
                     </a>

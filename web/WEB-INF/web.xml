@@ -5,10 +5,6 @@
         <servlet-class>controller.NewsController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CommentController</servlet-name>
-        <servlet-class>controller.CommentController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>InsertNews</servlet-name>
         <servlet-class>controller.InsertNews</servlet-class>
     </servlet>
@@ -40,13 +36,17 @@
         <servlet-name>Search</servlet-name>
         <servlet-class>controller.Search</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertComment</servlet-name>
+        <servlet-class>controller.InsertComment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateComment</servlet-name>
+        <servlet-class>controller.UpdateComment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewsController</servlet-name>
         <url-pattern>/NewsController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CommentController</servlet-name>
-        <url-pattern>/CommentController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetListNews</servlet-name>
@@ -80,6 +80,14 @@
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertComment</servlet-name>
+        <url-pattern>/InsertComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateComment</servlet-name>
+        <url-pattern>/UpdateComment</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -89,4 +97,7 @@
         </cookie-config>
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>GetListNews</welcome-file>
+    </welcome-file-list>
 </web-app>

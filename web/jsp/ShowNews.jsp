@@ -37,7 +37,7 @@
                     <image src="<%= location + news.getImage()%>" width="500" height="600">
                 </td>
                 <td>
-                    <a href='NewsController?cat_id=<%=news.getCat_id()%>&action=search'>
+                    <a href='NewsController?search_category=<%=news.getCat_id()%>'>
                         <%=news.getCat_name()%>
                     </a>
                 </td>

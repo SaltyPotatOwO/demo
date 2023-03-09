@@ -4,6 +4,8 @@
  */
 package controller;
 
+import dao.CommentDAO;
+import dbObject.Comments;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,22 +17,12 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author Asus
  */
-public class forwardToHomePage extends HttpServlet {
+public class InsertComment extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //NEED NEW TO CHANGE TO NEW JSP NAME
-        request.getRequestDispatcher("jsp/HomePage.jsp").forward(request, response);
+
     }
 
     /**
@@ -44,17 +36,17 @@ public class forwardToHomePage extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        try {
+            CommentDAO commentDAO = new CommentDAO();
+            int news_id = Integer.parseInt(request.getParameter("news_id"));
+            int user_id = Integer.parseInt(request.getParameter("user_id"));
+            String comment_content = request.getParameter("comment_content");
+            Comments comment = new Comments(user_id, news_id, comment_content);
+            commentDAO.insertComments(comment);
+            response.sendRedirect("GetNews?news_id=" + news_id);
+        } catch (Exception e) {
+            System.out.println("ERROR INSERTING COMMENT");
+        }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

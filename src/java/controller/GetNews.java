@@ -6,14 +6,20 @@
 package controller;
 
 import dao.NewsDAO;
+import dao.CatDAO;
+import dao.CommentDAO;
+import dao.UserDAO;
+import dbObject.Comments;
 import dbObject.News;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.HashMap;
+import model.Category;
+import model.User;
 
 /**
  *
@@ -35,38 +41,46 @@ public class GetNews extends HttpServlet {
         try {
             News news;
             NewsDAO newsDAO = new NewsDAO();
+            CatDAO catDAO = new CatDAO();
+            UserDAO userDAO = new UserDAO();
             int news_id = Integer.parseInt(request.getParameter("news_id"));
-            int cat_id = Integer.parseInt(request.getParameter("cat_id"));
+            
             news = newsDAO.getNews(news_id);
-            ArrayList<News> list = newsDAO.searchCategory(cat_id);
+            
+            int cat_id = news.getCat_id();
+
+            ArrayList<News> sameCategoryNews= newsDAO.searchCategory(cat_id);
+            HashMap <Integer,Category> categoryList = catDAO.getAllCategorys();
+            HashMap <Integer,User> userList = userDAO.getAllUser();
+            
             request.setAttribute("news", news);
-            request.setAttribute("sameCategoryList", list);
-            request.getRequestDispatcher("ShowNews").forward(request, response);
+            request.setAttribute("sameCategoryNews", sameCategoryNews);
+            request.setAttribute("categoryList", categoryList);
+            request.setAttribute("userList", userList);
+
+            getListComments(request, response,news_id);
         } catch (Exception e) {
-            System.out.println("ERROR GETTING NEWS");
+            System.out.println("aust");
         }
     } 
 
-    /** 
-     * Handles the HTTP <code>POST</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
+    public void getListComments(HttpServletRequest request, HttpServletResponse response,int news_id){
+        try {
+            CommentDAO commentDAO = new CommentDAO();
+            ArrayList<Comments> listComments = commentDAO.getListComment(news_id);
+            request.setAttribute("listComments", listComments);    
+            request.getRequestDispatcher("ShowNews.jsp").forward(request, response);
+            System.out.println("amogus");
+        } catch (Exception e) {
+            System.out.println("ERROR SHOWING LIST COMMENTS");
+        }
+    }   
+    
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         
     }
-
-    /** 
-     * Returns a short description of the servlet.
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

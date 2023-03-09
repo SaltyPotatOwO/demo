@@ -8,7 +8,6 @@ package controller;
 import dao.NewsDAO;
 import dbObject.News;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -51,7 +50,7 @@ public class UpdateNews extends HttpServlet {
             throws ServletException, IOException {
         NewsDAO dao = new NewsDAO();
         String[] dataArray = new String[6];
-        News news = null;
+        News news = new News();
         int i = 0;
         try {
             

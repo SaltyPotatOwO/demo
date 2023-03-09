@@ -5,14 +5,12 @@
 package controller;
 
 import dao.NewsDAO;
-import dbObject.News;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -112,9 +110,10 @@ public class InsertNews extends HttpServlet {
             String content = dataArray[4];
             String image = dataArray[5];
             
-            News news = new News (user_id, cat_id, title, subtitle, content, image);
-            dao.insertNews(news);
-            response.sendRedirect("index.html");
+//            News news = new News (user_id, cat_id, title, subtitle, content, image);
+//            dao.insertNews(news);
+//            request.
+            response.sendRedirect("GetListNews");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -141,7 +140,7 @@ public class InsertNews extends HttpServlet {
         //get location of image file in project
         String path = InsertNews.class.getProtectionDomain().getCodeSource().getLocation().getPath();//get location of jar file in class News Controller
         String decodedPath = URLDecoder.decode(path, "UTF-8");
-        return decodedPath.replace("build/web/WEB-INF/classes/", "").substring(1) + "web/images/";//only return the location of project file
+        return decodedPath.replace("build/web/WEB-INF/classes/", "").substring(1) + "web/image/";//only return the location of project file
     }
 
 }
